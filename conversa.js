@@ -18,17 +18,18 @@ function addSala(){
   });
   localStorage.setItem("nomeDaSala", novaSala);
   window.location = "sala.html";
-  function getData() {firebase.database().ref("/").on('value',
-  function(snapshot) {document.getElementById("output").innerHTML =
-  "";snapshot.forEach(function(childSnapshot) {childKey =
+}
+function getData() {firebase.database().ref("/").on('value',
+  function(snapshot) {snapshot.forEach(function(childSnapshot) {childKey =
   childSnapshot.key;
   roomNames = childKey;
   //Início do código
+    console.log(roomNames);
     divJs = "<div class='roomName'id="+roomNames+"  onclick='entrarSala(this.id)'>"+roomNames+"</div> <hr>"
+    document.getElementById("nomeSalas").innerHTML += divJs;
   //Fim do código
-  });});}
+});});}
   getData();
-}
 function entrarSala(name){
   console.log(name);
   localStorage.setItem("nomeDaSalaFeita",name)
